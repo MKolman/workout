@@ -7,6 +7,9 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
+	interface Array<T> {
+		findLast(predicate: (value: T, index: number, obj: T[]) => boolean): T
+	}
 }
 
-export {};
+export { };
