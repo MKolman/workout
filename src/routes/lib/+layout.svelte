@@ -8,7 +8,7 @@
 		['programs', '/lib'],
 		['workouts', '/lib/workouts'],
 		['exercises', '/lib/exercises'],
-		['search', '/lib/search']
+		['search', '/lib/search'],
 	]);
 	const path = $page.url.pathname;
 	let active = tabs.findLast((tab) => path.startsWith(urls.get(tab) as string));

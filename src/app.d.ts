@@ -8,8 +8,8 @@ declare global {
 		// interface Platform {}
 	}
 	interface Array<T> {
-		findLast(predicate: (value: T, index: number, obj: T[]) => boolean): T
+		findLast(predicate: (value: T, index: number, obj: T[]) => boolean): T;
 	}
 }
 
-export { };
+export {};
