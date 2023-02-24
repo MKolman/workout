@@ -1,18 +1,34 @@
-export enum Type {
-	Barbell,
-	Dumbell,
-	Kettlebell,
-	Bodyweight,
-	Time,
-}
+// This works better than enums for some reason
+export const Type = {
+	Barbell: 'Barbell',
+	Dumbell: 'Dumbell',
+	Kettlebell: 'Kettlebell',
+	Bodyweight: 'Bodyweight',
+	Time: 'Time',
+} as const;
+export type Type = string;
 
-const iconMapping = new Map<Type, string>([
-	[Type.Barbell, 'fitness_center'],
-	[Type.Dumbell, 'exercise'],
-	[Type.Kettlebell, 'weight'],
-	[Type.Bodyweight, 'directions_run'],
-	[Type.Time, 'timer'],
-]);
+export class TypeUtil {
+	static icon(type: Type): string {
+		switch (type) {
+			case Type.Barbell:
+				return 'fitness_center';
+			case Type.Dumbell:
+				return 'exercise';
+			case Type.Kettlebell:
+				return 'weight';
+			case Type.Bodyweight:
+				return 'directions_run';
+			case Type.Time:
+				return 'timer';
+			default:
+				throw `icon not defined for Type ${type}`;
+		}
+	}
+	static toString(type: Type): string {
+		return type.toString();
+	}
+}
 
 export class Exercise {
 	id: string;
@@ -26,7 +42,7 @@ export class Exercise {
 	}
 
 	icon(): string {
-		return iconMapping.get(this.type) || 'cancel';
+		return TypeUtil.icon(this.type);
 	}
 }
 
