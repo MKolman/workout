@@ -25,8 +25,32 @@ export class TypeUtil {
 				throw `icon not defined for Type ${type}`;
 		}
 	}
-	static toString(type: Type): string {
-		return type.toString();
+	static formatDifficulty(type: Type, difficulty: number): string {
+		switch (type) {
+			case Type.Barbell:
+			case Type.Dumbell:
+			case Type.Kettlebell:
+				return `${difficulty}kg`;
+			case Type.Bodyweight:
+				return '';
+			case Type.Time:
+				let result = '';
+				let hours, minutes, seconds;
+				if ((hours = Math.floor(difficulty / 3600))) {
+					result += `${hours}h`;
+					difficulty %= 3600;
+				}
+				if ((minutes = Math.floor(difficulty / 60))) {
+					result += `${minutes}m`;
+					difficulty %= 60;
+				}
+				if ((seconds = Math.floor(difficulty))) {
+					result += `${seconds}s`;
+				}
+				return result;
+			default:
+				throw `format not defined for Type ${type}`;
+		}
 	}
 }
 
@@ -43,6 +67,10 @@ export class Exercise {
 
 	icon(): string {
 		return TypeUtil.icon(this.type);
+	}
+
+	difficulty(difficulty: number): string {
+		return TypeUtil.formatDifficulty(this.type, difficulty);
 	}
 }
 

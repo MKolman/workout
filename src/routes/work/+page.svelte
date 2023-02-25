@@ -1,2 +1,26 @@
-<h1>Workout</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import { CurrentProgram } from '../../models/progress';
+	import { Program, Store } from '../../models/program';
+	import WorkoutCard from '../lib/workouts/WorkoutCard.svelte';
+
+	const activeProgram = Store.get(CurrentProgram) as Program;
+</script>
+
+<div class="col-card-holder">
+	<h1>{activeProgram.name}</h1>
+	{#each activeProgram.workouts as workout, index}
+		<WorkoutCard {workout} href="/work/{activeProgram.id}/{index}" />
+	{/each}
+</div>
+
+<style>
+	div.col-card-holder {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		overflow: auto;
+		padding: 1em;
+		padding-bottom: 10em;
+		line-height: 2em;
+	}
+</style>

@@ -25,7 +25,7 @@
 		</Label>
 	</Tab>
 </TabBar>
-<div class="content">
+<div class="col-card-holder">
 	<slot />
 </div>
 {#if active !== 'search'}
@@ -35,7 +35,7 @@
 {/if}
 
 <style>
-	div.content {
+	div.col-card-holder {
 		display: flex;
 		flex-direction: column;
 		gap: 1em;

@@ -10,7 +10,7 @@ describe('Test exercise typeutil coverage', () => {
 	});
 	it('has the same toString', () => {
 		for (const key in Type) {
-			const value = TypeUtil.toString(key);
+			const value = key.toString();
 			expect(key).toEqual(value);
 		}
 	});
