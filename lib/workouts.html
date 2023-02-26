@@ -6,21 +6,26 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
 		<link href="../_app/immutable/assets/_layout-9f83b41d.css" rel="stylesheet">
-		<link href="../_app/immutable/assets/_layout-1a07f56b.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/start-c35c644c.js">
+		<link href="../_app/immutable/assets/_layout-658503d3.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/WorkoutCard-0df0f9bf.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/start-f83df8ee.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index-6d0a9015.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/singletons-15ac4f7b.js">
-		<link rel="modulepreload" href="../_app/immutable/components/pages/_layout.svelte-d58037d0.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons-7c5cf3ee.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/_layout.svelte-9526fde8.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/SmuiElement-dbb92510.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/classAdderBuilder-af2bd1e8.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/Ripple-3d668b62.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/stores-a416b9c7.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/dispatch-49762ebd.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/Ripple-03e9247e.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/stores-e8904866.js">
 		<link rel="modulepreload" href="../_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="../_app/immutable/components/pages/lib/_layout.svelte-37ebaad9.js">
-		<link rel="modulepreload" href="../_app/immutable/components/pages/lib/workouts/_page.svelte-6d8b265e.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/exercise-efe048a6.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/workout-00ec576f.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/lib/_layout.svelte-7bef4bfa.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/lib/workouts/_page.svelte-419b18ef.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/WorkoutCard-f29cb89b.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/ActionIcons-fa62cfc4.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/navigation-7aa17d52.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/workout-61d879eb.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/exercise-fc101538.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">
@@ -35,13 +40,13 @@
 <link rel="stylesheet" href="/smui.css" media="(prefers-color-scheme: light)">
 <link rel="stylesheet" href="/smui-dark.css" media="screen and (prefers-color-scheme: dark)">
 
-<div class="wrapper svelte-vsvyj6"><div class="app-body svelte-vsvyj6"><div class="mdc-tab-bar" role="tablist"><div class="mdc-tab-scroller"><div class="mdc-tab-scroller__scroll-area" style=""><div class="mdc-tab-scroller__scroll-content" style=""><a class="mdc-tab mdc-tab--active" style="" role="tab" aria-selected="true" tabindex="0" href="/lib"><span class="mdc-tab__content"><span class="mdc-tab__text-label">programs</span>
-    </span>
-  <span class="mdc-tab-indicator mdc-tab-indicator--active"><span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style=""></span>
-</span>
-  <span class="mdc-tab__ripple"></span></a><a class="mdc-tab" style="" role="tab" aria-selected="false" tabindex="-1" href="/lib/workouts"><span class="mdc-tab__content"><span class="mdc-tab__text-label">workouts</span>
+<div class="wrapper svelte-vsvyj6"><div class="app-body svelte-vsvyj6"><div class="mdc-tab-bar" role="tablist"><div class="mdc-tab-scroller"><div class="mdc-tab-scroller__scroll-area" style=""><div class="mdc-tab-scroller__scroll-content" style=""><a class="mdc-tab" style="" role="tab" aria-selected="false" tabindex="-1" href="/lib"><span class="mdc-tab__content"><span class="mdc-tab__text-label">programs</span>
     </span>
   <span class="mdc-tab-indicator"><span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style=""></span>
+</span>
+  <span class="mdc-tab__ripple"></span></a><a class="mdc-tab mdc-tab--active" style="" role="tab" aria-selected="true" tabindex="0" href="/lib/workouts"><span class="mdc-tab__content"><span class="mdc-tab__text-label">workouts</span>
+    </span>
+  <span class="mdc-tab-indicator mdc-tab-indicator--active"><span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style=""></span>
 </span>
   <span class="mdc-tab__ripple"></span></a><a class="mdc-tab" style="" role="tab" aria-selected="false" tabindex="-1" href="/lib/exercises"><span class="mdc-tab__content"><span class="mdc-tab__text-label">exercises</span>
     </span>
@@ -54,89 +59,86 @@
   <span class="mdc-tab__ripple"></span></a></div></div>
 </div>
 </div>
-<div class="content svelte-10qhuzm"><div class="mdc-card mdc-card--outlined"><div class="smui-card__content"><h2>5x5 A</h2>
-			<span style="vertical-align: middle">5x5
-						Squat</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">5x5
-						Bench press</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">5x5
-						Barbell row</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br>
-		</div>
-	
-</div><div class="mdc-card mdc-card--outlined"><div class="smui-card__content"><h2>5x5 B</h2>
-			<span style="vertical-align: middle">5x5
-						Squat</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">5x5
-						Overhead press</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">5x5
-						Deadlift</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br>
-		</div>
-	
-</div><div class="mdc-card mdc-card--outlined"><div class="smui-card__content"><h2>Madcow A</h2>
-			<span style="vertical-align: middle">5x5
-						Squat</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">5x5
-						Bench press</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">5x5
-						Barbell row</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br>
-		</div>
-	
-</div><div class="mdc-card mdc-card--outlined"><div class="smui-card__content"><h2>Madcow B</h2>
-			<span style="vertical-align: middle">4x5
-						Squat</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">4x5
-						Incline bench</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">4x5
-						Deadlift</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br>
-		</div>
-	
-</div><div class="mdc-card mdc-card--outlined"><div class="smui-card__content"><h2>Madcow C</h2>
-			<span style="vertical-align: middle">4x5
-						Squat</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">1x3
-						Squat</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">1x8
-						Squat</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">4x5
-						Bench press</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">1x3
-						Bench press</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">1x8
-						Bench press</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">4x5
-						Barbell row</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">1x3
-						Barbell row</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br><span style="vertical-align: middle">1x8
-						Barbell row</span>
-					<span class="material-symbols-rounded" style="vertical-align: middle; float: right;">fitness_center</span>
-					<br>
-		</div>
-	
+<div class="col-card-holder svelte-1700q2t"><div class="mdc-card mdc-card--outlined"><div class="mdc-card__primary-action" style="" tabindex="0"><div class="mdc-card__ripple"></div>
+  <div class="smui-card__content" href="/lib/workouts/edit?id=5x5_a"><h2>5x5 A</h2>
+			<div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Squat</span>
+					<span class="sets row svelte-1dde68b">5x5
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div><div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Bench press</span>
+					<span class="sets row svelte-1dde68b">5x5
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div><div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Barbell row</span>
+					<span class="sets row svelte-1dde68b">5x5
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div></div>
+</div>
+</div><div class="mdc-card mdc-card--outlined"><div class="mdc-card__primary-action" style="" tabindex="0"><div class="mdc-card__ripple"></div>
+  <div class="smui-card__content" href="/lib/workouts/edit?id=5x5_b"><h2>5x5 B</h2>
+			<div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Squat</span>
+					<span class="sets row svelte-1dde68b">5x5
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div><div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Overhead press</span>
+					<span class="sets row svelte-1dde68b">5x5
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div><div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Deadlift</span>
+					<span class="sets row svelte-1dde68b">5x5
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div></div>
+</div>
+</div><div class="mdc-card mdc-card--outlined"><div class="mdc-card__primary-action" style="" tabindex="0"><div class="mdc-card__ripple"></div>
+  <div class="smui-card__content" href="/lib/workouts/edit?id=madcow_a"><h2>Madcow A</h2>
+			<div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Squat</span>
+					<span class="sets row svelte-1dde68b">5x5
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div><div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Bench press</span>
+					<span class="sets row svelte-1dde68b">5x5
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div><div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Barbell row</span>
+					<span class="sets row svelte-1dde68b">5x5
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div></div>
+</div>
+</div><div class="mdc-card mdc-card--outlined"><div class="mdc-card__primary-action" style="" tabindex="0"><div class="mdc-card__ripple"></div>
+  <div class="smui-card__content" href="/lib/workouts/edit?id=madcow_b"><h2>Madcow B</h2>
+			<div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Squat</span>
+					<span class="sets row svelte-1dde68b">4x5
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div><div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Incline bench</span>
+					<span class="sets row svelte-1dde68b">4x5
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div><div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Deadlift</span>
+					<span class="sets row svelte-1dde68b">4x5
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div></div>
+</div>
+</div><div class="mdc-card mdc-card--outlined"><div class="mdc-card__primary-action" style="" tabindex="0"><div class="mdc-card__ripple"></div>
+  <div class="smui-card__content" href="/lib/workouts/edit?id=madcow_c"><h2>Madcow C</h2>
+			<div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Squat</span>
+					<span class="sets row svelte-1dde68b">4x3, 1x8, 1x8
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div><div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Bench press</span>
+					<span class="sets row svelte-1dde68b">4x3, 1x8, 1x8
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div><div class="row svelte-1dde68b"><span class="name svelte-1dde68b">Barbell row</span>
+					<span class="sets row svelte-1dde68b">4x3, 1x8, 1x8
+						<span class="material-symbols-rounded">fitness_center
+						</span></span>
+				</div></div>
+</div>
 </div></div>
 <button class="mdc-fab smui-fab--color-primary" style="bottom: 1em; right: 1em; position: absolute;"><div class="mdc-fab__ripple"></div>
   
@@ -160,14 +162,14 @@
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="xq29qk">
-			import { start } from "../_app/immutable/start-c35c644c.js";
+		<script type="module" data-sveltekit-hydrate="12dtprz">
+			import { start } from "../_app/immutable/start-f83df8ee.js";
 
 			start({
 				assets: "",
 				env: {},
-				target: document.querySelector('[data-sveltekit-hydrate="xq29qk"]').parentNode,
-				version: "1676928205773",
+				target: document.querySelector('[data-sveltekit-hydrate="12dtprz"]').parentNode,
+				version: "1677437846175",
 				hydrate: {
 					node_ids: [0, 2, 6],
 					data: [null,null,null],
