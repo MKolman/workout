@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { CurrentProgram } from '../../models/progress';
-	import { Program, Store } from '../../models/program';
+	import { CurrentProgram } from '../../../models/progress';
+	import { Program, Store } from '../../../models/program';
 	import WorkoutCard from '../lib/workouts/WorkoutCard.svelte';
 
 	const activeProgram = Store.get(CurrentProgram) as Program;
@@ -9,7 +9,7 @@
 <div class="col-card-holder">
 	<h1>{activeProgram.name}</h1>
 	{#each activeProgram.workouts as workout, index}
-		<WorkoutCard {workout} href="/work/{activeProgram.id}/{index}" />
+		<WorkoutCard {workout} href="/active?program={activeProgram.id}&workout={workout.id}" />
 	{/each}
 </div>
 

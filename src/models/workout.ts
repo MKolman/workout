@@ -5,6 +5,29 @@ type Set = {
 	sets: number[];
 };
 
+export function formatSets(sets: number[]): string {
+	let result = '';
+	let cnt = 0;
+	let prev = null;
+	for (const n of sets) {
+		console.log(result, cnt, prev, n);
+		if (prev === null) {
+			cnt = 1;
+			prev = n;
+			continue;
+		}
+		if (prev != n) {
+			result += `${cnt}x${prev}, `;
+			cnt = 0;
+		}
+		prev = n;
+		cnt += 1;
+	}
+	if (prev != null) result += `${cnt}x${prev}`;
+	console.log(sets, result);
+	return result;
+}
+
 export class Workout {
 	id: string;
 	name: string;
@@ -17,24 +40,11 @@ export class Workout {
 	setsDisplay(): { sets: string; name: string; icon: string }[] {
 		const result = [];
 		for (const set of this.work) {
-			const tmp = { sets: '', name: set.exercise.name, icon: set.exercise.icon() };
-			let cnt = 0;
-			let prev = null;
-			for (const n of set.sets) {
-				if (prev === null) {
-					cnt = 1;
-					prev = n;
-					continue;
-				}
-				if (prev != n) {
-					tmp.sets += `${cnt}x${n}, `;
-					cnt = 0;
-				}
-				prev = n;
-				cnt += 1;
-			}
-			if (prev != null) tmp.sets += `${cnt}x${prev}`;
-
+			const tmp = {
+				sets: formatSets(set.sets),
+				name: set.exercise.name,
+				icon: set.exercise.icon(),
+			};
 			result.push(tmp);
 		}
 		return result;

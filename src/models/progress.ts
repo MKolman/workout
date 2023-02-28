@@ -1,4 +1,4 @@
-import type { Program } from './program';
+import type { Workout } from './workout';
 
 export const CurrentProgram = 'stronglifts_5x5';
 
@@ -9,20 +9,12 @@ export type Progress = {
 
 export const Store = new Map<string, Progress>();
 
-export function getProgress(program: Program): Progress {
-	const storedProgress = Store.get(program.id);
-	if (storedProgress) {
-		return storedProgress;
+export function getProgress(workout: Workout, programId?: string): Progress {
+	// TODO: use programId + workout.id as key
+	const progress = Store.get(workout.id) || { day: 0, difficulty: new Map<string, number>() };
+	for (const set of workout.work) {
+		progress.difficulty.set(set.exercise.id, 10);
 	}
-	const progress = {
-		day: 0,
-		difficulty: new Map<string, number>(),
-	};
-	for (const workout of program.workouts) {
-		for (const set of workout.work) {
-			progress.difficulty.set(set.exercise.id, 10);
-		}
-	}
-	Store.set(program.id, progress);
+	Store.set(workout.id, progress);
 	return progress;
 }

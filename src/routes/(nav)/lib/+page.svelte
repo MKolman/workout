@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Card, { Content } from '@smui/card';
-	import { Store } from '../../models/program';
+	import { Store } from '../../../models/program';
 	let active = 'stronglifts_5x5';
 	const programs = Array.from(Store.values()).sort((a, b) =>
 		[a.id != active, a.id] < [b.id != active, b.id] ? -1 : 1,

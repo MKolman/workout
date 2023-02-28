@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use '@material/button/index' as mdc-button;
 
 html,
 body {
@@ -14,4 +15,13 @@ a {
 
 a:visited {
 	color: color.scale(#40b3ff, $lightness: -35%);
+}
+
+.mdc-button.btn-round {
+	@include mdc-button.shape-radius(999px);
+	min-width: unset;
+	padding: 0;
+	aspect-ratio: 1/1;
+	font-size: large;
+	padding: 1.5rem;
 }

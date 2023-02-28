@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Card, { Content, PrimaryAction } from '@smui/card';
-	import type { Workout } from '../../../models/workout';
+	import type { Workout } from '../../../../models/workout';
 	import { goto } from '$app/navigation';
 
 	export let workout: Workout;

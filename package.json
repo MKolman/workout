@@ -42,5 +42,8 @@
 		"vite": "^4.0.0",
 		"vitest": "^0.28.5"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"dexie": "^3.2.3"
+	}
 }

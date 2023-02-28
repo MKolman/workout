@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Card, { Content } from '@smui/card';
-	import { Store } from '../../../models/exercise';
+	import { Store } from '../../../../models/exercise';
 	const exercises = Array.from(Store.values()).sort((a, b) => (a.id < b.id ? -1 : 1));
 </script>
 

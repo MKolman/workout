@@ -88,5 +88,6 @@ export const Store = new Map<string, Exercise>(
 		new Exercise('Pull-up', Type.Bodyweight),
 		new Exercise('Chin-up', Type.Bodyweight),
 		new Exercise('Kettlebell swing', Type.Kettlebell),
+		new Exercise('Bodyweight', Type.Kettlebell),
 	].map((ex) => [ex.id, ex]),
 );
