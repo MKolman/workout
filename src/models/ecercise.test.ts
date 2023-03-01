@@ -20,4 +20,10 @@ describe('Test exercise typeutil coverage', () => {
 			expect(() => TypeUtil.icon(type)).not.toThrow();
 		}
 	});
+	it('has a formatter', () => {
+		expect(() => TypeUtil.formatDifficulty('asdfasf', 1)).toThrow();
+		for (const type in Type) {
+			expect(() => TypeUtil.formatDifficulty(type, 1)).not.toThrow();
+		}
+	});
 });

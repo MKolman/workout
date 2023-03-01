@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { CurrentProgram } from '../../../models/progress';
-	import { Program, Store } from '../../../models/program';
+	import { Program, NotLoaded } from '../../../models/program';
 	import WorkoutCard from '../lib/workouts/WorkoutCard.svelte';
 
-	const activeProgram = Store.get(CurrentProgram) as Program;
+	let activeProgram = NotLoaded;
+	(async () => {
+		activeProgram = await Program.get(CurrentProgram);
+	})();
 </script>
 
 <div class="col-card-holder">

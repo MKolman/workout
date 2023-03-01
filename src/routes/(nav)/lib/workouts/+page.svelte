@@ -1,9 +1,12 @@
 <script lang="ts">
 	import WorkoutCard from './WorkoutCard.svelte';
-	import { Store } from '../../../../models/workout';
-	const workouts = Array.from(Store.values()).sort((a, b) => (a.id < b.id ? -1 : 1));
+	import { Workout } from '../../../../models/workout';
+	import { db as _ } from '../../../../models/db';
+	const workouts = Workout.all();
 </script>
 
-{#each workouts as workout}
-	<WorkoutCard {workout} href="/lib/workouts/edit?id={workout.id}" />
-{/each}
+{#await workouts then workouts}
+	{#each workouts as workout}
+		<WorkoutCard {workout} href="/lib/workouts/edit?id={workout.id}" />
+	{/each}
+{/await}

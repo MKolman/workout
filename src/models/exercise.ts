@@ -1,3 +1,5 @@
+import type { Table } from 'dexie';
+
 // This works better than enums for some reason
 export const Type = {
 	Barbell: 'Barbell',
@@ -5,6 +7,8 @@ export const Type = {
 	Kettlebell: 'Kettlebell',
 	Bodyweight: 'Bodyweight',
 	Time: 'Time',
+	Machine: 'Machine',
+	Velocity: 'Velocity',
 } as const;
 export type Type = string;
 
@@ -21,8 +25,14 @@ export class TypeUtil {
 				return 'directions_run';
 			case Type.Time:
 				return 'timer';
+			case Type.Machine:
+				return 'table_rows_narrow';
+			case Type.Velocity:
+				return 'speed';
 			default:
-				throw `icon not defined for Type ${type}`;
+				throw `icon not defined for Type '${type}' '${Type.Barbell}' ${type == Type.Barbell} ${
+					type == 'Barbell'
+				} ${type.charCodeAt(type.length - 1)}!= ${Type.Barbell.length}`;
 		}
 	}
 	static formatDifficulty(type: Type, difficulty: number): string {
@@ -30,9 +40,12 @@ export class TypeUtil {
 			case Type.Barbell:
 			case Type.Dumbell:
 			case Type.Kettlebell:
+			case Type.Machine:
 				return `${difficulty}kg`;
 			case Type.Bodyweight:
 				return '';
+			case Type.Velocity:
+				return `${difficulty}km/h`;
 			case Type.Time:
 				let result = '';
 				let hours, minutes, seconds;
@@ -53,15 +66,17 @@ export class TypeUtil {
 		}
 	}
 }
-
 export class Exercise {
 	id: string;
 	name: string;
+	shortName: string;
 	type: Type;
+	static db?: Table<Exercise>;
 
-	constructor(name: string, type: Type) {
-		this.id = name.toLowerCase().replaceAll(' ', '_');
+	constructor(id: string, name: string, shortName: string, type: Type) {
+		this.id = id;
 		this.name = name;
+		this.shortName = shortName;
 		this.type = type;
 	}
 
@@ -72,22 +87,41 @@ export class Exercise {
 	difficulty(difficulty: number): string {
 		return TypeUtil.formatDifficulty(this.type, difficulty);
 	}
+
+	async save(): Promise<void> {
+		await Exercise.db?.put(this);
+	}
+	static async get(id: string): Promise<Exercise> {
+		return (await Exercise.db?.get(id)) || NotLoaded;
+	}
+	static async bulkGet(ids: string[]): Promise<Exercise[]> {
+		return (
+			(await Exercise.db?.bulkGet(ids))?.map((e) => e || NotLoaded) || ids.map(() => NotLoaded)
+		);
+	}
+	static async all(): Promise<Exercise[]> {
+		return (await Exercise.db?.toArray()) || [];
+	}
 }
 
-export const Store = new Map<string, Exercise>(
-	[
-		new Exercise('Squat', Type.Barbell),
-		new Exercise('Deadlift', Type.Barbell),
-		new Exercise('Bench press', Type.Barbell),
-		new Exercise('Incline bench', Type.Barbell),
-		new Exercise('Barbell row', Type.Barbell),
-		new Exercise('Overhead press', Type.Barbell),
-		new Exercise('Bicep curls', Type.Dumbell),
-		new Exercise('Plank', Type.Time),
-		new Exercise('Push-up', Type.Bodyweight),
-		new Exercise('Pull-up', Type.Bodyweight),
-		new Exercise('Chin-up', Type.Bodyweight),
-		new Exercise('Kettlebell swing', Type.Kettlebell),
-		new Exercise('Bodyweight', Type.Kettlebell),
-	].map((ex) => [ex.id, ex]),
-);
+const NotLoaded = new Exercise('not_loaded', 'Not Loaded', 'Not Loaded', Type.Barbell);
+
+export async function populateExercises(): Promise<void> {
+	if (!Exercise.db) {
+		console.error('Database not available');
+		return;
+	}
+	const req = await fetch('/exercises.csv');
+	if (!req.ok) {
+		console.error('Failed to fetch exercises.csv', req);
+		return;
+	}
+	const data = await req.text();
+	const lines = data.split('\n');
+	const ex = [];
+	for (const line of lines.slice(1)) {
+		const [id, name, shortName, type] = line.trimEnd().split(',');
+		ex.push(new Exercise(id, name, shortName, type as Type));
+	}
+	await Exercise.db?.bulkAdd(ex);
+}

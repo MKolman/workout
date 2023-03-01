@@ -1,10 +1,7 @@
 import { db } from './db';
-import type { Exercise } from './exercise';
-import type { Program } from './program';
-import type { Workout } from './workout';
-import { Store as PStore } from './program';
-import { Store as WStore } from './workout';
-import { Store as EStore } from './exercise';
+import { Exercise } from './exercise';
+import { Program } from './program';
+import { Workout } from './workout';
 
 export type History = {
 	id?: number;
@@ -56,7 +53,7 @@ export async function getWorkoutLog(): Promise<WorkoutLog[]> {
 	const pCache = new Set<string>(),
 		wCache = new Set<string>(),
 		eCache = new Set<string>();
-	for (const history of all) {
+	for (const history of all.slice(1)) {
 		if (history.programId) {
 			pCache.add(history.programId);
 		}
@@ -78,18 +75,20 @@ export async function getWorkoutLog(): Promise<WorkoutLog[]> {
 		grouped[last].push(history);
 	}
 
-	const workouts = [];
-	for (const group of grouped) {
-		workouts.push({
+	const workouts = await Promise.all(
+		grouped.map(async (group) => ({
 			time: group[0].time,
-			program: group[0].programId ? PStore.get(group[0].programId) : undefined,
-			workout: group[0].workoutId ? WStore.get(group[0].workoutId) : undefined,
-			exercises: group.map((history) => ({
-				sets: history.sets,
-				exercise: EStore.get(history.exerciseId) as Exercise,
-				difficulty: history.difficulty,
-			})),
-		});
-	}
+			program: group[0].programId ? await Program.get(group[0].programId) : undefined,
+			workout: group[0].workoutId ? await Workout.get(group[0].workoutId) : undefined,
+			exercises: await Promise.all(
+				group.map(async (history) => ({
+					sets: history.sets,
+					exercise: await Exercise.get(history.exerciseId),
+					difficulty: history.difficulty,
+				})),
+			),
+		})),
+	);
+
 	return workouts;
 }

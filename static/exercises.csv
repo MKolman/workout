@@ -1,0 +1,111 @@
+Id,Name,Short name,Type
+barbell:bench_press,Bench Press,Bench,Barbell
+barbell:incline_bench_press,Incline Bench Press,Bench,Barbell
+barbell:decline_bench_press,Decline Bench Press,Bench,Barbell
+barbell:close-grip_bench_press,Close-Grip Bench Press,Bench,Barbell
+barbell:spoto_bench_press,Spoto Bench Press,Bench,Barbell
+barbell:larsen_bench_press,Larsen Bench Press,Bench,Barbell
+barbell:hook_lying_bench_press,Hook Lying Bench Press,Bench,Barbell
+barbell:standing_bicep_curl,Standing Bicep Curl,Curl,Barbell
+barbell:wall-supported_bicep_curl,Wall-Supported Bicep Curl,Curl,Barbell
+barbell:preacher_curl,Preacher Curl,Curl,Barbell
+barbell:vertical_preacher_curl,Vertical Preacher Curl,Curl,Barbell
+barbell:spider_curl,Spider Curl,Curl,Barbell
+barbell:reverse_grip_curls,Reverse Grip Curls,Curl,Barbell
+barbell:flat_bench_skull_crushers,Flat Bench Skull Crushers,Skull Crushers,Barbell
+barbell:incline_skull_crushers,Incline Skull Crushers,Skull Crushers,Barbell
+barbell:overhead_tricep_extension,Overhead Tricep Extension,Tricep Extension,Barbell
+barbell:jm_press,JM Press,Press,Barbell
+barbell:standing_overhead_press,Standing Overhead Press,Press,Barbell
+barbell:behind_the_neck_press,Behind The Neck Press,Press,Barbell
+barbell:push_press,Push Press,Press,Barbell
+barbell:bradford_press,Bradford Press,Press,Barbell
+barbell:z_press,Z Press,Press,Barbell
+barbell:half-kneeling_landmine_press,Half-Kneeling Landmine Press,Press,Barbell
+barbell:seated_shoulder_press,Seated Shoulder Press,Press,Barbell
+barbell:row,Row,Row,Barbell
+barbell:yates_row,Yates Row,Row,Barbell
+barbell:pendlay_row,Pendlay Row,Row,Barbell
+barbell:face_pull,Face Pull,Face Pull,Barbell
+barbell:shrug,Shrug,Shrugs,Barbell
+barbell:upright_row,Upright Row,Row,Barbell
+barbell:meadows_row,Meadows Row,Row,Barbell
+barbell:t-bar_row,T-Bar Row,Row,Barbell
+barbell:single-arm_landmine_row,Single-Arm Landmine Row,Row,Barbell
+barbell:underhand_row,Underhand Row,Row,Barbell
+barbell:pullover,Pullover,Pullover,Barbell
+barbell:glute_bridge,Glute Bridge,Bridge,Barbell
+barbell:hip_thrust,Hip Thrust,Hip Thrust,Barbell
+barbell:rear_foot_elevated_split_squat,Rear Foot Elevated Split Squat,Squat,Barbell
+barbell:curtsy_reverse_lunge,Curtsy Reverse Lunge,Lunge,Barbell
+barbell:deadlift,Deadlift,Deadlift,Barbell
+barbell:romanian_deadlift,Romanian Deadlift,Deadlift,Barbell
+barbell:wall_reference_romanian_deadlift,Wall Reference Romanian Deadlift,Deadlift,Barbell
+barbell:snatch_grip_romanian_deadlift,Snatch Grip Romanian Deadlift,Deadlift,Barbell
+barbell:good_morning,Good Morning,Good Morning,Barbell
+barbell:back_squat,Back Squat,Squat,Barbell
+barbell:front_squat,Front Squat,Squat,Barbell
+barbell:pin_squat,Pin Squat,Squat,Barbell
+barbell:pause_squat,Pause Squat,Squat,Barbell
+barbell:zercher_squat,Zercher Squat,Squat,Barbell
+barbell:box_squat,Box Squat,Squat,Barbell
+barbell:split_squat,Split Squat,Squat,Barbell
+barbell:seated_calf_raises,Seated Calf Raises,Calf Raises,Barbell
+barbell:standing_calf_raises,Standing Calf Raises,Calf Raises,Barbell
+barbell:jump_shrugs,Jump Shrugs,Shrugs,Barbell
+barbell:abdominal_roll_out,Abdominal Roll Out,Roll Out,Barbell
+barbell:oblique_side_bend,Oblique Side Bend,Side Bend,Barbell
+barbell:overhead_sit-up,Overhead Sit-Up,Sit-Up,Barbell
+barbell:russian_twists,Russian Twists,Twists,Barbell
+dumbell:bent-over_row,Bent-Over Row,Row,Dumbell
+dumbell:bicep_curl,Bicep Curl,Curl,Dumbell
+dumbell:bulgarian_split_squat,Bulgarian Split Squat,Squat,Dumbell
+dumbell:bench_press,Bench Press,Bench,Dumbell
+dumbell:curtsy_lunges,Curtsy Lunges,Lunge,Dumbell
+dumbell:dumbbell_swing,Dumbbell Swing,Swing,Dumbell
+dumbell:forward_lunge,Forward Lunge,Lunge,Dumbell
+dumbell:front_squat,Front Squat,Squat,Dumbell
+dumbell:goblet_squat,Goblet Squat,Squat,Dumbell
+dumbell:glute_bridge,Glute Bridge,Bridge,Dumbell
+dumbell:bicep_curl_to_press,Bicep Curl To Press,Curl,Dumbell
+dumbell:incline_bench_press,Incline Bench Press,Bench,Dumbell
+dumbell:devil_press,Devil Press,Press,Dumbell
+dumbell:elevated_glute_bridge,Elevated Glute Bridge,Bridge,Dumbell
+dumbell:floor_press,Floor Press,Press,Dumbell
+dumbell:forward_lunge_with_hammer_curl,Forward Lunge With Hammer Curl,Lunge/Curl,Dumbell
+dumbell:front_raise,Front Raise,Front Raise,Dumbell
+dumbell:single_leg_glute_bridge,Single Leg Glute Bridge,Bridge,Dumbell
+dumbell:hammer_curl,Hammer Curl,Curl,Dumbell
+dumbell:hip_thrusts,Hip Thrusts,Hip Thrusts,Dumbell
+dumbell:incline_double_row,Incline Double Row,Row,Dumbell
+dumbell:lateral_lunge,Lateral Lunge,Lunge,Dumbell
+dumbell:lateral_raise,Lateral Raise,Lateral Raise,Dumbell
+dumbell:single-arm_overhead_squat,Single-Arm Overhead Squat,Squat,Dumbell
+dumbell:push_up_with_dumbbells,Push Up With Dumbbells,Push up,Dumbell
+dumbell:rear_delt_rows,Rear Delt Rows,Row,Dumbell
+dumbell:romanian_deadlift,Romanian Deadlift,Deadlift,Dumbell
+dumbell:reverse_fly,Reverse Fly,Reverse Fly,Dumbell
+dumbell:reverse_lunge,Reverse Lunge,Lunge,Dumbell
+dumbell:russian_twists,Russian Twists,Twists,Dumbell
+bodyweight:calf_raises,Calf Raises,Calf Raises,Bodyweight
+bodyweight:burpees,Burpees,Burpees,Bodyweight
+bodyweight:jump_squats,Jump Squats,Jump Squats,Bodyweight
+bodyweight:push_up,Push Up,Push Up,Bodyweight
+bodyweight:knee_push_up,Knee Push Up,Push Up,Bodyweight
+bodyweight:handstand_push_up,Handstand Push Up,Push Up,Bodyweight
+bodyweight:crunch,Crunch,Crunch,Bodyweight
+bodyweight:reverse_crunch,Reverse Crunch,Crunch,Bodyweight
+bodyweight:bicycle_crunch,Bicycle Crunch,Crunch,Bodyweight
+bodyweight:pull-up,Pull-Up,Pull-Up,Bodyweight
+bodyweight:chin-up,Chin-Up,Chin-Up,Bodyweight
+bodyweight:single-leg_deadlift,Single-Leg Deadlift,Deadlift,Bodyweight
+bodyweight:bird_dog,Bird Dog,Bird Dog,Bodyweight
+bodyweight:dips,Dips,Dips,Bodyweight
+bodyweight:diamond_push-ups,Diamond Push-Ups,Push Up,Bodyweight
+bodyweight:mountain_climbers,Mountain Climbers,Mountain Climbers,Bodyweight
+bodyweight:glute_bridge,Glute Bridge,Bridge,Bodyweight
+bodyweight:forward_lunge,Forward Lunge,Lunge,Bodyweight
+time:wall_sit,Wall Sit,Wall Sit,Time
+time:side_plank,Side Plank,Plank,Time
+time:plank,Plank,Plank,Time
+time:run,Run,Run,Time
