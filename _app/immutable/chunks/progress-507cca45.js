@@ -1,0 +1,1 @@
+const o="stronglifts_5x5",s=new Map;function i(e,n){const r=s.get(e.id)||{day:0,difficulty:new Map};for(const t of e.work)r.difficulty.set(t.exercise.id,10);return s.set(e.id,r),r}export{o as C,i as g};
