@@ -50,7 +50,7 @@
 
 <div class="wrapper">
 	<Textfield bind:value={workout.name} label="Name" />
-	{#each workout.work as set, idx}
+	{#each workout.work as set, idx (set)}
 		{#if idx != 0}
 			<Button variant="outlined" on:click={() => swap(idx, idx - 1)}>
 				<Icon class="material-symbols-rounded">swap_vert</Icon>
