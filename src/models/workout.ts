@@ -96,7 +96,7 @@ export class Workout {
 		return await Promise.all(res.map((wo) => wo.load()));
 	}
 }
-const NotLoaded = new Workout('Not Loaded', []);
+export const NotLoaded = new Workout('Loading...', []);
 export async function populateWorkouts(): Promise<void> {
 	const [squat, bench, row, press, deadlift, incline] = [
 		'barbell:back_squat',

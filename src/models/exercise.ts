@@ -104,7 +104,7 @@ export class Exercise {
 	}
 }
 
-const NotLoaded = new Exercise('not_loaded', 'Not Loaded', 'Not Loaded', Type.Barbell);
+export const NotLoaded = new Exercise('not_loaded', 'Not Loaded', 'Not Loaded', Type.Barbell);
 
 export async function populateExercises(): Promise<void> {
 	if (!Exercise.db) {

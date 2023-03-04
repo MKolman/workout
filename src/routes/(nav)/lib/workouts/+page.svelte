@@ -7,6 +7,6 @@
 
 {#await workouts then workouts}
 	{#each workouts as workout}
-		<WorkoutCard {workout} href="/lib/workouts/edit?id={workout.id}" />
+		<WorkoutCard {workout} href="/edit/workout?id={workout.id}" />
 	{/each}
 {/await}

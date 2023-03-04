@@ -12,8 +12,13 @@
 
 	const _workout = { name: 'Loading...', work: [] as Set[] };
 	const _progress = { day: 0, difficulty: new Map() };
-	const programId = $page.url.searchParams.get('program') || undefined;
-	const workoutId = $page.url.searchParams.get('workout') || undefined;
+	let programId: string | undefined = undefined;
+	let workoutId: string | undefined = undefined;
+	if (browser) {
+		let params = new URL(document.location.href).searchParams;
+		programId = params.get('program') || undefined;
+		workoutId = params.get('workout') || undefined;
+	}
 	let workout = _workout,
 		progress = _progress,
 		done: number[][] = [];
