@@ -45,6 +45,12 @@ export class Program {
 		if (!progs) return [];
 		return await Promise.all(progs.map((p) => p.load()));
 	}
+	static new(): Program {
+		return new Program('New Program', [], crypto.randomUUID());
+	}
+	async delete(): Promise<void> {
+		await Program.db?.delete(this.id);
+	}
 }
 
 export const NotLoaded = new Program('Not Loaded', []);
