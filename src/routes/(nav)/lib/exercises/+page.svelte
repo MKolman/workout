@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Card, { Content } from '@smui/card';
-	import { db } from '../../../../models/db';
 	import { Exercise } from '../../../../models/exercise';
+	import { db as _ } from '../../../../models/db';
 	const exercises = Exercise.all();
 </script>
 

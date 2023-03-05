@@ -62,6 +62,9 @@ export class Workout {
 		this.name = name;
 		this.work = work;
 	}
+	static new(): Workout {
+		return new Workout('New workout', [], crypto.randomUUID());
+	}
 	setsDisplay(): { sets: string; name: string; icon: string }[] {
 		const result = [];
 		for (const set of this.work) {
@@ -84,6 +87,9 @@ export class Workout {
 	async save(): Promise<IndexableType | undefined> {
 		return Workout.db?.put(this.toDb());
 	}
+	async delete(): Promise<void | undefined> {
+		return Workout.db?.delete(this.id);
+	}
 
 	static async get(id: string): Promise<Workout> {
 		const wo = await Workout.db?.get(id);
@@ -92,7 +98,6 @@ export class Workout {
 
 	static async all(): Promise<Workout[]> {
 		const res = (await Workout.db?.toArray()) || [];
-		console.log('allWO', res, Workout.db);
 		return await Promise.all(res.map((wo) => wo.load()));
 	}
 }

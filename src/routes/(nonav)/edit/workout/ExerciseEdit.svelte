@@ -5,7 +5,6 @@
 	import Autocomplete from '@smui-extra/autocomplete';
 	import Card, { Actions, Content } from '@smui/card';
 	import Button, { Icon } from '@smui/button';
-
 	import type { Set } from '../../../../models/workout';
 	import type { Exercise } from '../../../../models/exercise';
 	import { createEventDispatcher } from 'svelte';
@@ -23,34 +22,46 @@
 		return ret;
 	};
 	const addOneRep = () => {
-		selected.forEach((s) => {
-			set.sets[s.key]++;
-			segments[s.key].val = set.sets[s.key];
+		const deleteIdx = selectedIdx();
+		deleteIdx.forEach((idx) => {
+			segments[idx].val = ++set.sets[idx];
 		});
+		dispatch('change');
 	};
+
 	const removeOneRep = () => {
-		selected.forEach((s) => {
-			set.sets[s.key]--;
-			segments[s.key].val = set.sets[s.key];
+		const deleteIdx = selectedIdx();
+		deleteIdx.forEach((idx) => {
+			if (set.sets[idx] <= 0) return;
+			segments[idx].val = --set.sets[idx];
 		});
+		dispatch('change');
 	};
-	const deleteSets = () => {
-		const toDelete = new Set<number>(selected.map((s) => s.key));
-		const deleteIdx = new Set<number>();
+
+	const selectedIdx = () => {
+		const selectedKeys = new Set<number>(selected.map((s) => s.key));
+		const selectedIdxs = new Set<number>();
 		segments.forEach((s, idx) => {
-			if (toDelete.has(s.key)) {
-				deleteIdx.add(idx);
+			if (selectedKeys.has(s.key)) {
+				selectedIdxs.add(idx);
 			}
 		});
-		segments = segments.filter((s) => !toDelete.has(s.key));
+		return selectedIdxs;
+	};
+
+	const deleteSets = () => {
+		const deleteIdx = selectedIdx();
+		segments = segments.filter((_, idx) => !deleteIdx.has(idx));
 		set.sets = set.sets.filter((_, idx) => !deleteIdx.has(idx));
 		selected = [];
+		dispatch('change');
 	};
 	const addSet = (ev: Event) => {
 		let n = set.sets.length === 0 ? 0 : set.sets[set.sets.length - 1];
 		set.sets.push(n);
 		segments.splice(segments.length - 1, 0, { val: n, key: key++ });
 		segments = segments;
+		dispatch('change');
 		ev.preventDefault();
 	};
 	let segments = setButtons(set.sets);

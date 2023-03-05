@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Tab, { Label } from '@smui/tab';
-	import Fab, { Icon } from '@smui/fab';
+	import { Icon } from '@smui/fab';
 	import TabBar from '@smui/tab-bar';
 	import { page } from '$app/stores';
 	const tabs = ['programs', 'workouts', 'exercises', 'search'];
@@ -28,11 +28,6 @@
 <div class="col-card-holder">
 	<slot />
 </div>
-{#if active !== 'search'}
-	<Fab color="primary" style="bottom: 1em; right: 1em; position: absolute;">
-		<Icon class="material-icons">add</Icon>
-	</Fab>
-{/if}
 
 <style>
 	div.col-card-holder {
