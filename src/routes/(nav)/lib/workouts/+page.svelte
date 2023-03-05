@@ -4,7 +4,6 @@
 	import { db as _ } from '../../../../models/db';
 	import Fab, { Icon } from '@smui/fab';
 	const workouts = Workout.all();
-	export const newLink = '/edit/workout?new';
 </script>
 
 {#await workouts then workouts}
@@ -13,6 +12,6 @@
 	{/each}
 {/await}
 
-<Fab color="primary" style="bottom: 1em; right: 1em; position: absolute;" href={newLink}>
+<Fab color="primary" style="bottom: 1em; right: 1em; position: absolute;" href="/edit/workout?new">
 	<Icon class="material-icons">add</Icon>
 </Fab>

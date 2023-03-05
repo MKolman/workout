@@ -24,8 +24,8 @@
 					</span>
 				</div>
 			{/each}
-		</Content></PrimaryAction
-	>
+		</Content>
+	</PrimaryAction>
 </Card>
 
 <style>

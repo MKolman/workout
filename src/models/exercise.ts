@@ -13,7 +13,7 @@ export const Type = {
 export type Type = string;
 
 export class TypeUtil {
-	static icon(type: Type): string {
+	static icon(type: Type, fallback?: string): string {
 		switch (type) {
 			case Type.Barbell:
 				return 'fitness_center';
@@ -30,9 +30,10 @@ export class TypeUtil {
 			case Type.Velocity:
 				return 'speed';
 			default:
-				throw `icon not defined for Type '${type}' '${Type.Barbell}' ${type == Type.Barbell} ${
-					type == 'Barbell'
-				} ${type.charCodeAt(type.length - 1)}!= ${Type.Barbell.length}`;
+				if (fallback) {
+					return fallback;
+				}
+				throw `icon not defined for Type '${type}'`;
 		}
 	}
 	static formatDifficulty(type: Type, difficulty: number): string {
@@ -80,8 +81,8 @@ export class Exercise {
 		this.type = type;
 	}
 
-	icon(): string {
-		return TypeUtil.icon(this.type);
+	icon(fallback?: string): string {
+		return TypeUtil.icon(this.type, fallback);
 	}
 
 	difficulty(difficulty: number): string {
@@ -102,9 +103,15 @@ export class Exercise {
 	static async all(): Promise<Exercise[]> {
 		return (await Exercise.db?.toArray()) || [];
 	}
+	static new(): Exercise {
+		return new Exercise(crypto.randomUUID(), 'New exercise', 'New', Type.Barbell);
+	}
+	async delete(): Promise<void> {
+		await Exercise.db?.delete(this.id);
+	}
 }
 
-export const NotLoaded = new Exercise('not_loaded', 'Not Loaded', 'Not Loaded', Type.Barbell);
+export const NotLoaded = new Exercise('not_loaded', 'Loading...', 'Loading...', Type.Barbell);
 
 export async function populateExercises(): Promise<void> {
 	if (!Exercise.db) {
