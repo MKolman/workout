@@ -113,8 +113,9 @@ export class Exercise {
 
 export const NotLoaded = new Exercise('not_loaded', 'Loading...', 'Loading...', Type.Barbell);
 
-export async function populateExercises(): Promise<void> {
-	if (!Exercise.db) {
+export async function populateExercises(db?: Table<Exercise>): Promise<void> {
+	db = db || Exercise.db;
+	if (!db) {
 		console.error('Database not available');
 		return;
 	}
@@ -130,5 +131,5 @@ export async function populateExercises(): Promise<void> {
 		const [id, name, shortName, type] = line.trimEnd().split(',');
 		ex.push(new Exercise(id, name, shortName, type as Type));
 	}
-	await Exercise.db?.bulkAdd(ex);
+	await db.bulkAdd(ex);
 }

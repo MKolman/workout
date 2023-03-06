@@ -9,7 +9,6 @@
 	import BackBanner from 'src/components/BackBanner.svelte';
 	import { Program, NotLoaded } from 'src/models/program';
 	import { Workout, NotLoaded as WoNotLoaded } from 'src/models/workout';
-	import { Exercise, NotLoaded as ExNotLoaded } from 'src/models/exercise';
 	import { db as _ } from 'src/models/db';
 	import WorkoutCard from 'src/routes/(nav)/lib/workouts/WorkoutCard.svelte';
 

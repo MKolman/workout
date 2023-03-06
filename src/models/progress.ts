@@ -1,7 +1,5 @@
 import type { Workout } from './workout';
 
-export const CurrentProgram = 'stronglifts_5x5';
-
 export type Progress = {
 	day: number;
 	difficulty: Map<string, number>;

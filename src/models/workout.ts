@@ -102,7 +102,7 @@ export class Workout {
 	}
 }
 export const NotLoaded = new Workout('Loading...', []);
-export async function populateWorkouts(): Promise<void> {
+export async function populateWorkouts(db?: Table<WorkoutDb>): Promise<void> {
 	const [squat, bench, row, press, deadlift, incline] = [
 		'barbell:back_squat',
 		'barbell:bench_press',
@@ -111,8 +111,12 @@ export async function populateWorkouts(): Promise<void> {
 		'barbell:deadlift',
 		'barbell:incline_bench_press',
 	];
-	if (!Workout.db) return;
-	await Workout.db.bulkPut(
+	db = db || Workout.db;
+	if (!db) {
+		console.error('Workout DB has not been initialized yet');
+		return;
+	}
+	await db.bulkPut(
 		[
 			{
 				name: '5x5 B',

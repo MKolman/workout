@@ -59,8 +59,13 @@ const Store = [
 	{ name: 'Madcow 5x5', wo: ['madcow_a', 'madcow_b', 'madcow_c'] },
 ];
 
-export async function populatePrograms(): Promise<void> {
-	await Program.db?.bulkPut(
+export async function populatePrograms(db?: Table<ProgramDb>): Promise<void> {
+	db = db || Program.db;
+	if (!db) {
+		console.error('Program DB not initialized');
+		return;
+	}
+	await db.bulkPut(
 		Store.map(({ name, wo }) => new ProgramDb(name.toLowerCase().replaceAll(' ', '_'), name, wo)),
 	);
 }

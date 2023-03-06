@@ -1,11 +1,19 @@
 <script lang="ts">
-	import { CurrentProgram } from '../../../models/progress';
-	import { Program, NotLoaded } from '../../../models/program';
+	import { Program, NotLoaded } from 'src/models/program';
+	import { ActiveProgram } from 'src/models/settings';
+	import { db as _ } from 'src/models/db';
 	import WorkoutCard from '../lib/workouts/WorkoutCard.svelte';
 
 	let activeProgram = NotLoaded;
 	(async () => {
-		activeProgram = await Program.get(CurrentProgram);
+		let prog = await ActiveProgram.get().catch((err) =>
+			console.error('Failed to load active program', err),
+		);
+		if (!prog) {
+			console.error('Active program not found', prog);
+			return;
+		}
+		activeProgram = await Program.get(prog.programId);
 	})();
 </script>
 

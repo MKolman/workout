@@ -1,16 +1,13 @@
 <script>
 	import Button from '@smui/button';
-	import { populateExercises } from '../../../models/exercise';
-	import { populatePrograms } from '../../../models/program';
-	import { populateWorkouts } from '../../../models/workout';
 	import { db as _ } from '../../../models/db';
+	import Dexie from 'dexie';
+
+	const factoryReset = async () => {
+		await Dexie.delete('workoutDb');
+		location.reload();
+	};
 </script>
 
 <h1>Settings</h1>
-<Button
-	on:click={() => {
-		populateExercises();
-		populateWorkouts();
-		populatePrograms();
-	}}>Load</Button
->
+<Button on:click={factoryReset}>Factory reset the app</Button>
