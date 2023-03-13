@@ -7,27 +7,32 @@
 		<meta http-equiv="content-security-policy" content="">
 		<link href="./_app/immutable/assets/_layout-5eabfcb9.css" rel="stylesheet">
 		<link href="./_app/immutable/assets/_layout-480aa73a.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/_page-658503d3.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/_layout-658503d3.css" rel="stylesheet">
 		<link href="./_app/immutable/assets/WorkoutCard-0df0f9bf.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/start-a64b2711.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index-e033f26d.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-7276fdcd.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-9ae998f4.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/db-e113e4cb.js">
+		<link rel="modulepreload" href="./_app/immutable/start-e91106fd.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index-be4f0507.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-bf7eef4e.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-79163512.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/db-e7795e52.js">
 		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/(nav)/_layout.svelte-edaff33e.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/SmuiElement-23c2e29c.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/classAdderBuilder-785988c2.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/IconButton-8a0b7a7c.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/(nav)/_layout.svelte-4a086b37.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/SmuiElement-ff68b272.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/classAdderBuilder-0a55304c.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/IconButton-b699d4bc.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/dispatch-49762ebd.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/Ripple-82e9efa3.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/stores-f5768125.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/(nav)/work/_page.svelte-d3dee10b.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/WorkoutCard-5e7343ab.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/ActionIcons-a9925a93.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/PrimaryAction-2cc5afe3.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/navigation-e5237a70.js"><title>Workout</title><!-- HEAD_svelte-vxyzc2_START --><link rel="stylesheet" href="/smui.css" media="(prefers-color-scheme: light)">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Ripple-7343a5ba.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/stores-502d342a.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/(nav)/work/_page.svelte-1fd15b95.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Actions-45e9d76d.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/prefixFilter-9aa1f37f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Svg-f78c7942.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/WorkoutCard-31861946.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ActionIcons-afed3091.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/PrimaryAction-1ffed0b7.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/navigation-e792b297.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ProgramCard-70b6a0fa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Button-995c0178.js"><title>Workout</title><!-- HEAD_svelte-vxyzc2_START --><link rel="stylesheet" href="/smui.css" media="(prefers-color-scheme: light)">
 		<link rel="stylesheet" href="/smui-dark.css" media="screen and (prefers-color-scheme: dark)"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700"><!-- HEAD_svelte-vxyzc2_END -->
 	</head>
 	<body data-sveltekit-preload-data="hover">
@@ -36,7 +41,23 @@
 
 
 
-<div class="wrapper svelte-ckh02c"><div class="app-body svelte-1kdfwnn"><div class="col-card-holder svelte-1700q2t"><h1>Not Loaded</h1>
+<div class="wrapper svelte-ckh02c"><div class="app-body svelte-1kdfwnn">
+
+
+<div class="mdc-dialog mdc-dialog--fullscreen" role="alertdialog" aria-modal="true" aria-labelledby="change-title" aria-describedby="change-content"><div class="mdc-dialog__container"><div class="mdc-dialog__surface" role="alertdialog" aria-modal="true"><div class="mdc-dialog__header"><h2 class="mdc-dialog__title" id="change-title">Select a new program</h2>
+		<button class="material-symbols-rounded mdc-icon-button mdc-icon-button--display-flex mdc-dialog__close" style="" data-mdc-dialog-action="close"><div class="mdc-icon-button__ripple"></div>
+  close</button></div>
+	<div class="changed-content mdc-dialog__content" id="change-content" style="display: flex;
+			   flex-direction: column;
+		       gap: 1rem;"></div>
+      <div class="mdc-dialog__surface-scrim"></div></div></div>
+  <div class="mdc-dialog__scrim"></div></div>
+
+
+
+<div class="col-card-holder svelte-1700q2t"><button class="mdc-button" style=""><div class="mdc-button__ripple"></div>
+  Not Loaded
+		<i class="material-symbols-rounded mdc-button__icon" aria-hidden="true">edit</i></button>
 	
 </div></div>
 
@@ -57,14 +78,14 @@
 </div></div>
 
 
-		<script type="module" data-sveltekit-hydrate="pqwwdg">
-			import { start } from "./_app/immutable/start-a64b2711.js";
+		<script type="module" data-sveltekit-hydrate="1kdrysv">
+			import { start } from "./_app/immutable/start-e91106fd.js";
 
 			start({
 				assets: "",
 				env: {},
-				target: document.querySelector('[data-sveltekit-hydrate="pqwwdg"]').parentNode,
-				version: "1678134134158",
+				target: document.querySelector('[data-sveltekit-hydrate="1kdrysv"]').parentNode,
+				version: "1678739343583",
 				hydrate: {
 					node_ids: [0, 2, 10],
 					data: [null,null,null],
