@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import Dexie, { type Table } from 'dexie';
 import { Exercise } from './exercise';
-import type { History } from './history';
+import { History, type HistoryDb } from './history';
 import { Program, ProgramDb } from './program';
 import { WorkoutDb, Workout } from './workout';
 import { populateExercises } from 'src/models/exercise';
@@ -10,7 +10,7 @@ import { populateWorkouts } from 'src/models/workout';
 import { populateSettings, Setting } from './settings';
 
 export class MySubClassedDexie extends Dexie {
-	history!: Table<History>;
+	history!: Table<HistoryDb>;
 	exercise!: Table<Exercise>;
 	workout!: Table<WorkoutDb>;
 	program!: Table<ProgramDb>;
@@ -20,24 +20,12 @@ export class MySubClassedDexie extends Dexie {
 		super('workoutDb');
 		this.version(1).stores({
 			history:
-				'++id, [workout_id+time], [exercise_id+time], [program_id+time], time, [exercise_id+difficulty]',
+				'++id, [workoutId+time], [exerciseId+time], [programId+time], time, [exerciseId+difficulty], [exerciseId+programId], [exerciseId+workoutId]',
 			exercise: 'id',
 			workout: 'id',
 			program: 'id',
+			settings: 'id',
 		});
-		this.version(2)
-			.stores({
-				settings: 'id',
-			})
-			.upgrade(async () => {
-				await Promise.all([
-					populateExercises(this.exercise),
-					populateWorkouts(this.workout),
-					populatePrograms(this.program),
-					populateSettings(this.settings),
-				]);
-			});
-
 		this.on('populate', async () => {
 			await Promise.all([
 				populateExercises(this.exercise),
@@ -60,4 +48,5 @@ if (browser) {
 	Workout.db = db.workout;
 	Program.db = db.program;
 	Setting.db = db.settings;
+	History.db = db.history;
 }

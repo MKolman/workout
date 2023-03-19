@@ -93,6 +93,7 @@ export class Exercise {
 		await Exercise.db?.put(this);
 	}
 	static async get(id: string): Promise<Exercise> {
+		if (id == 'bodyweight') return Bodyweight;
 		return (await Exercise.db?.get(id)) || NotLoaded;
 	}
 	static async bulkGet(ids: string[]): Promise<Exercise[]> {
@@ -112,6 +113,7 @@ export class Exercise {
 }
 
 export const NotLoaded = new Exercise('not_loaded', 'Loading...', 'Loading...', Type.Barbell);
+export const Bodyweight = new Exercise('bodyweight', 'Bodyweight', 'Bodyweight', Type.Kettlebell);
 
 export async function populateExercises(db?: Table<Exercise>): Promise<void> {
 	db = db || Exercise.db;

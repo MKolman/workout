@@ -24,7 +24,11 @@
 					{#each wo.exercises as ex}
 						<span class="row">
 							<span class="name">{ex.exercise?.name}</span>
-							<span>{formatSets(ex.sets)} of {ex.difficulty}kg </span>
+							{#if ex.exercise?.id === 'bodyweight'}
+								<span> {ex.difficulty}kg </span>
+							{:else}
+								<span>{formatSets(ex.sets)} of {ex.difficulty}kg </span>
+							{/if}
 						</span>
 					{/each}
 				</Content>

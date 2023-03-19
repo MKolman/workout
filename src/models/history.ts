@@ -1,9 +1,10 @@
+import { Dexie, type Table } from 'dexie';
 import { db } from './db';
-import { Exercise } from './exercise';
+import { Bodyweight, Exercise } from './exercise';
 import { Program } from './program';
 import { Workout } from './workout';
 
-export type History = {
+export type HistoryDb = {
 	id?: number;
 	// Unix timestamp
 	time: number;
@@ -12,13 +13,123 @@ export type History = {
 	exerciseId: string;
 	difficulty: number;
 	sets: Int16Array;
+	completed: boolean;
 };
 
-export async function save(history: History) {
+export async function save(history: HistoryDb): Promise<void> {
 	if (history.id) {
 		await db.history.put(history);
 	} else {
 		await db.history.add(history);
+	}
+}
+
+export class History {
+	static db?: Table<HistoryDb>;
+
+	time: number; // Unix timestamp
+	programId?: string;
+	workoutId?: string;
+	exercise: Exercise;
+	difficulty: number;
+	completedSets: Int16Array;
+	plannedSets: Int16Array;
+	constructor(
+		time: number,
+		programId: string | undefined,
+		workoutId: string | undefined,
+		exercise: Exercise,
+		difficulty: number,
+		completedSets: Int16Array,
+		plannedSets: Int16Array,
+	) {
+		this.time = time;
+		this.programId = programId;
+		this.workoutId = workoutId;
+		this.exercise = exercise;
+		this.difficulty = difficulty;
+		this.plannedSets = plannedSets;
+		this.completedSets = completedSets;
+	}
+	static async getLastDifficulty(
+		exerciseId: string,
+		workoutId?: string,
+		programId?: string,
+	): Promise<number> {
+		if (!History.db) {
+			console.error('History db not loaded');
+			return 10;
+		}
+		if (programId) {
+			const history = await History.db
+				.where('[exerciseId+programId]')
+				.equals([exerciseId, programId])
+				.first();
+			if (history) {
+				return history.difficulty;
+			}
+		}
+		if (workoutId) {
+			const history = await History.db
+				.where('[exerciseId+workoutId]')
+				.equals([exerciseId, workoutId, Dexie.minKey])
+				.first();
+			if (history) {
+				return history.difficulty;
+			}
+		}
+		const history = await History.db
+			.where('[exerciseId+workoutId]')
+			.between([exerciseId, Dexie.minKey], [exerciseId, Dexie.minKey])
+			.first();
+		if (history) {
+			return history.difficulty;
+		}
+		console.warn('History log not found');
+		return 10;
+	}
+	static async fromWorkout(workout: Workout, programId?: string): Promise<History[]> {
+		const difs = await Promise.all(
+			workout.work.map(async (set) =>
+				History.getLastDifficulty(set.exercise.id, workout.id, programId),
+			),
+		);
+		const time = new Date().getTime();
+		const result = workout.work.map(
+			(set, idx) =>
+				new History(
+					time,
+					programId,
+					workout.id,
+					set.exercise,
+					difs[idx],
+					Int16Array.from(set.sets.map(() => 0)),
+					Int16Array.from(set.sets),
+				),
+		);
+		result.push(
+			new History(
+				time,
+				programId,
+				workout.id,
+				Bodyweight,
+				await History.getLastDifficulty(Bodyweight.id, workout.id, programId),
+				new Int16Array(),
+				new Int16Array(),
+			),
+		);
+		return result;
+	}
+	async save(): Promise<void> {
+		await save({
+			time: this.time,
+			programId: this.programId,
+			workoutId: this.workoutId,
+			exerciseId: this.exercise.id,
+			difficulty: this.difficulty,
+			sets: this.completedSets,
+			completed: this.plannedSets.every((set, idx) => set <= this.completedSets[idx]),
+		});
 	}
 }
 
@@ -29,7 +140,7 @@ export async function fillDummyData() {
 		exerciseId: 'bodyweight',
 		difficulty: 10,
 		sets: new Int16Array(),
-	} as History;
+	} as HistoryDb;
 	for (let i = 60; i < 100; i++) {
 		history.difficulty = i;
 		delete history.id;
@@ -49,7 +160,7 @@ export async function getWorkoutLog(): Promise<WorkoutLog[]> {
 	if (all.length === 0) {
 		return [];
 	}
-	const grouped: History[][] = [[all[0]]];
+	const grouped: HistoryDb[][] = [[all[0]]];
 	const pCache = new Set<string>(),
 		wCache = new Set<string>(),
 		eCache = new Set<string>();
@@ -67,10 +178,10 @@ export async function getWorkoutLog(): Promise<WorkoutLog[]> {
 			continue;
 		}
 		if (grouped[last][0].programId !== history.programId) {
-			console.warn('program_id mismatch', grouped[last][0].programId, history.programId);
+			console.warn('programId mismatch', grouped[last][0].programId, history.programId);
 		}
 		if (grouped[last][0].workoutId !== history.workoutId) {
-			console.warn('workout_id mismatch', grouped[last][0].workoutId, history.workoutId);
+			console.warn('workoutId mismatch', grouped[last][0].workoutId, history.workoutId);
 		}
 		grouped[last].push(history);
 	}

@@ -26,6 +26,14 @@ export class ActiveProgram extends Setting {
 		console.log(Setting.db, active);
 		return active as ActiveProgram | undefined;
 	}
+	static async getProgramId(): Promise<string | undefined> {
+		const active = await ActiveProgram.get();
+		return active?.programId;
+	}
+	static async set(programId: string): Promise<void> {
+		const active = new ActiveProgram(programId);
+		await active.save();
+	}
 }
 
 export class DarkMode extends Setting {
