@@ -20,8 +20,13 @@ a:visited {
 .mdc-button.btn-round {
 	@include mdc-button.shape-radius(999px);
 	min-width: unset;
-	padding: 0;
 	aspect-ratio: 1/1;
 	font-size: large;
 	padding: 1.5rem;
+	&.small {
+		padding: 0;
+	}
+	&.border {
+		border: 1pt solid;
+	}
 }

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Card, { Content, PrimaryAction } from '@smui/card';
 	import Fab, { Icon } from '@smui/fab';
-	import { Exercise } from '../../../../models/exercise';
 	import { goto } from '$app/navigation';
-	import { db as _ } from '../../../../models/db';
+	import { Exercise } from 'src/models/exercise';
+	import { db as _ } from 'src/models/db';
 	const exercises = Exercise.all();
 </script>
 

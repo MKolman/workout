@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import IconButton from '@smui/icon-button';
 	export let href: string;
 	export let title: string = 'back';
