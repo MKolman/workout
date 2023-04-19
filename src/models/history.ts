@@ -64,7 +64,7 @@ export class History {
 			const history = await History.db
 				.where('[exerciseId+programId]')
 				.equals([exerciseId, programId])
-				.first();
+				.last();
 			if (history) {
 				return history.difficulty;
 			}
@@ -73,7 +73,7 @@ export class History {
 			const history = await History.db
 				.where('[exerciseId+workoutId]')
 				.equals([exerciseId, workoutId, Dexie.minKey])
-				.first();
+				.last();
 			if (history) {
 				return history.difficulty;
 			}
@@ -81,7 +81,7 @@ export class History {
 		const history = await History.db
 			.where('[exerciseId+workoutId]')
 			.between([exerciseId, Dexie.minKey], [exerciseId, Dexie.minKey])
-			.first();
+			.last();
 		if (history) {
 			return history.difficulty;
 		}
@@ -156,7 +156,7 @@ export type WorkoutLog = {
 };
 
 export async function getWorkoutLog(): Promise<WorkoutLog[]> {
-	const all = await db.history.orderBy('time').toArray();
+	const all = await db.history.orderBy('time').desc().toArray();
 	if (all.length === 0) {
 		return [];
 	}
