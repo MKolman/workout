@@ -57,7 +57,7 @@ barbell:abdominal_roll_out,Abdominal Roll Out,Roll Out,Barbell
 barbell:oblique_side_bend,Oblique Side Bend,Side Bend,Barbell
 barbell:overhead_sit-up,Overhead Sit-Up,Sit-Up,Barbell
 barbell:russian_twists,Russian Twists,Twists,Barbell
-dumbell:bent-over_row,Bent-Over Row,Row,Dumbell
+dumbell:bent_over_row,Bent-Over Row,Row,Dumbell
 dumbell:bicep_curl,Bicep Curl,Curl,Dumbell
 dumbell:bulgarian_split_squat,Bulgarian Split Squat,Squat,Dumbell
 dumbell:bench_press,Bench Press,Bench,Dumbell
@@ -109,3 +109,9 @@ time:wall_sit,Wall Sit,Wall Sit,Time
 time:side_plank,Side Plank,Plank,Time
 time:plank,Plank,Plank,Time
 time:run,Run,Run,Time
+bodyweight:box_jump_up,Box Jump (up),Box Jump,Bodyweight
+bodyweight:box_jump_down,Box Jump (down),Box Jump,Bodyweight
+bodyweight:jump,Height Jump,Jump,Bodyweight
+bodyweight:volley_jump,Volleyball Jump,Jump,Bodyweight
+time:isometric_squat,Isometric Squat,Isometric Squat,Time
+barbell:explosive_hex_squat,Explosive Hex Squat,Squat,Barbell
